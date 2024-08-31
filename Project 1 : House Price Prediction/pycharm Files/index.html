@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to House Price Prediction</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">House Price Prediction</h2>
+
+        <!-- Display the prediction result if it exists -->
+        {% if prediction_result %}
+            <div class="alert alert-success text-center">
+                {{ prediction_result }}
+            </div>
+        {% endif %}
+
+        <form action="/" method="post">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select class="selectpicker form-control" id="location" name="location" required>
+                    {% for location in locations %}
+                        <option value="{{ location }}">{{ location }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bhk">Number of BHK</label>
+                <input type="number" class="form-control" id="bhk" name="bhk" placeholder="Enter number of BHK" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bathrooms">Number of Bathrooms</label>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" placeholder="Enter number of bathrooms" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sqft">Total Square Feet</label>
+                <input type="number" class="form-control" id="sqft" name="sqft" placeholder="Enter total square feet" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Predict House Price</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
